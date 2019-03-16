@@ -44,7 +44,7 @@ def labels_for_training_data(directory):
     
 def train_classifier(faces, faceID):
 	face_recognizer = cv2.face.LBPHFaceRecognizer_create()
-	face_recognizer.train(face, np.array(faceID))
+	face_recognizer.train(faces, np.array(faceID))
 	return face_recognizer
 	
 def draw_rect(test_img, face):

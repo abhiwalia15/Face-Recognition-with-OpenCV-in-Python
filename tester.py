@@ -20,14 +20,16 @@ for(x, y, w, h) in faces_detected:
   cv2.destroyAllWindows
 '''
 
-faces, facesID = fr.labels_for_training_data('')
+faces, faceID = fr.labels_for_training_data('trainingImages')
 face_recognizer = fr.train_classifier(faces, faceID)
+face_recognizer.save('trainingData.yml') 
+
 name = {0:'gandu', 1:'abhi'}
 
-for faces in face_detected:
+for face in faces_detected:
 	(x, y, w, h) = face
 	#region of interest i.e our face
-	roi_gray = gray_img[y:y+h, x;x+h]
+	roi_gray = gray_img[y:y+h, x:x+h]
 	label, confidence = face_recognizer.predict(roi_gray)
 	
 	print("confidence:", confidence)
@@ -35,10 +37,9 @@ for faces in face_detected:
 	
 	fr.draw_rect(test_img, face)
 	predicted_name = name[label]
-	fr.put_text(text_img, predicted_name, x, y)
+	fr.put_text(test_img, predicted_name, x, y)
 	
 resized_img = cv2.resize(test_img, (1000,700))
-  cv2.imshow('faces detection tutorial', resized_img)
-  
-  cv2.waitKey(0)
-  cv2.destroyAllWindows
+cv2.imshow('faces detection tutorial', resized_img)
+cv2.waitKey(0)
+cv2.destroyAllWindows
