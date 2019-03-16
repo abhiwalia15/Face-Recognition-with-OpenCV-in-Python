@@ -21,11 +21,11 @@ for(x, y, w, h) in faces_detected:
 '''
 
 #uncomment this if you wanna train the data again
-#faces, faceID = fr.labels_for_training_data('trainingImages')
-#face_recognizer = fr.train_classifier(faces, faceID)
-#face_recognizer.save('trainingData.yml') 
-face_recognizer = cv2.face.LBPHFaceRecognizer_create()
-face_recognizer.read('trainingData.yml')
+faces, faceID = fr.labels_for_training_data('trainingImages')
+face_recognizer = fr.train_classifier(faces, faceID)
+face_recognizer.save('trainingData.yml') 
+#face_recognizer = cv2.face.LBPHFaceRecognizer_create()
+#face_recognizer.read('trainingData.yml')
 
 name = {0:'gandu', 1:'abhi'}
 
