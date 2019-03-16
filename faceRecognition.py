@@ -40,5 +40,10 @@ def labels_for_training_data(directory):
             faces.append(roi_gray)
             faceID.append(int(id))
     return faces,faceID
+    
+    
+def train_classifier(faces, faceID):
+	face_recognizer = cv2.face.LBPHFaceRecognizer_create()
+	face_recognizer.train(face, faceID)
 
 
