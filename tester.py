@@ -40,9 +40,12 @@ for face in faces_detected:
 	
 	fr.draw_rect(test_img, face)
 	predicted_name = name[label]
+	
+	if(confidence > 37):
+		continue
 	fr.put_text(test_img, predicted_name, x, y)
 	
-resized_img = cv2.resize(test_img, (800,400))
-cv2.imshow('faces detection tutorial', resized_img)
+resized_img = cv2.resize(test_img, (1100,700))
+cv2.imshow('Face Detected:', resized_img)
 cv2.waitKey(0)
 cv2.destroyAllWindows
