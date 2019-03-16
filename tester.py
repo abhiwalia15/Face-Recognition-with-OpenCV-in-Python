@@ -20,9 +20,12 @@ for(x, y, w, h) in faces_detected:
   cv2.destroyAllWindows
 '''
 
-faces, faceID = fr.labels_for_training_data('trainingImages')
-face_recognizer = fr.train_classifier(faces, faceID)
-face_recognizer.save('trainingData.yml') 
+#uncomment this if you wanna train the data again
+#faces, faceID = fr.labels_for_training_data('trainingImages')
+#face_recognizer = fr.train_classifier(faces, faceID)
+#face_recognizer.save('trainingData.yml') 
+face_recognizer = cv2.face.LBPHFaceRecognizer_create()
+face_recognizer.read('trainingData.yml')
 
 name = {0:'gandu', 1:'abhi'}
 
@@ -39,7 +42,7 @@ for face in faces_detected:
 	predicted_name = name[label]
 	fr.put_text(test_img, predicted_name, x, y)
 	
-resized_img = cv2.resize(test_img, (1000,700))
+resized_img = cv2.resize(test_img, (800,400))
 cv2.imshow('faces detection tutorial', resized_img)
 cv2.waitKey(0)
 cv2.destroyAllWindows
